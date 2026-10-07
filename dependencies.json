@@ -1,0 +1,39 @@
+[
+  {
+    "name": "cropperjs",
+    "version": "2.3.0",
+    "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/fengyuanchen/cropperjs.git",
+      "directory": "packages/cropperjs"
+    }
+  },
+  {
+    "name": "justified-layout",
+    "version": "4.1.0",
+    "license": "ISC",
+    "repository": {
+      "type": "git",
+      "url": "git@github.com:flickr/justified-layout.git"
+    }
+  },
+  {
+    "name": "colorthief",
+    "version": "3.5.0",
+    "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/lokesh/color-thief.git"
+    }
+  },
+  {
+    "name": "page-flip",
+    "version": "2.0.7",
+    "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/Nodlik/StPageFlip.git"
+    }
+  }
+]

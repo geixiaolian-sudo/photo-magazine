@@ -1,19 +1,15 @@
-name: Deploy to GitHub Pages
-
+name: Deploy Photo Edition
 on:
   push:
     branches: [main]
   workflow_dispatch:
-
 permissions:
   contents: read
   pages: write
   id-token: write
-
 concurrency:
   group: pages
   cancel-in-progress: true
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -21,19 +17,16 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v6
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
-      - name: Prepare website files
-        run: |
-          mkdir _site
-          cp index.html _site/
-          touch _site/.nojekyll
-      - name: Upload website files
-        uses: actions/upload-pages-artifact@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v7
         with:
-          path: _site
-      - name: Publish website
-        id: deployment
+          node-version: 22
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: npm run build
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+      - id: deployment
         uses: actions/deploy-pages@v4
